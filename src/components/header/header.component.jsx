@@ -1,21 +1,22 @@
 import React from "react";
 import "./header.styles.scss";
-import {withRouter} from "react-router-dom";
+import {withRouter, Link} from "react-router-dom";
 import {ReactComponent as ReactLogo} from "./crown.svg";
 
 const Header = ({history,match}) =>{
     return(
         <div className="header">
         <div className="logo-container">
-           <ReactLogo />
+           <Link to="/"><ReactLogo /></Link>
         </div>
 
         <div className="options">
 
-            <p onClick={()=>{history.push(`${match.url}shop`)}} className="option">SHOP</p>
-            <p className="option">CONTACT</p>
-            <p className="option">SIGN IN</p>
-            <p className="option">CART</p>
+            <Link to="/shop" className="option">SHOP</Link>
+            <Link to="/contact" className="option">CONTACT</Link>
+            <Link to="/signin" className="option">SIGN IN</Link>
+            <Link to="/cart" className="option">CART</Link>
+           
 
         </div>
             
