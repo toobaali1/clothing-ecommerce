@@ -1,6 +1,6 @@
 import React from "react";
 import "./header.styles.scss";
-import {withRouter, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {ReactComponent as ReactLogo} from "./crown.svg";
 import { auth } from "../../firebase/firebase.utils";
 import {connect} from "react-redux";
