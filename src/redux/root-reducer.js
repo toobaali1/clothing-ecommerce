@@ -1,8 +1,8 @@
 import {combineReducers} from "redux";
 import userReducer from "./user/user-reducer";
-import dropdownReducer from "./dropdown/dropdown-reducer";
+import cartReducer from "./cart/cart-reducer";
 
 export default combineReducers({
     user: userReducer,
-    dropdown: dropdownReducer
+    cart: cartReducer
 });

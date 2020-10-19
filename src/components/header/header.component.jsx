@@ -5,13 +5,11 @@ import {ReactComponent as ReactLogo} from "../../assets/crown.svg";
 import CartIcon from "../cart-icon/cart-icon.component.jsx";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
-
-
 import {Link} from "react-router-dom";
 import { auth } from "../../firebase/firebase.utils";
 import {connect} from "react-redux";
 
-const Header = ({currentUser, currentStatus}) =>{
+const Header = ({currentUser, currentDropdownStatus}) =>{
     return(
         <div className="header">
             <div className="logo-container">
@@ -26,7 +24,7 @@ const Header = ({currentUser, currentStatus}) =>{
                 
             </div>
 
-           {currentStatus && <CartDropdown />}
+           {currentDropdownStatus && <CartDropdown />}
 
         </div>
     )
@@ -36,7 +34,7 @@ const Header = ({currentUser, currentStatus}) =>{
 
 const mapStateToProps = (state) => ({
     currentUser: state.user.currentUser,
-    currentStatus: state.dropdown.currentStatus 
+    currentDropdownStatus: state.cart.currentDropdownStatus 
 })
 
 export default connect(mapStateToProps)(Header);
