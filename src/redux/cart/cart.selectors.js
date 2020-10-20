@@ -13,3 +13,14 @@ export const selectCartItemsCount = createSelector([selectCartItems], (cartItems
         return( acc + cartItem.quantity);
     },0);
 });
+
+export const selectCartTotalPrice = createSelector([selectCartItems], (cartItems)=>{
+    return cartItems.reduce((acc,cartItem)=>{
+        return acc + (cartItem.price * cartItem.quantity);
+    }, 0);
+});
+
+export const selectCartCurrentDropdownStatus = createSelector([selectCart],(cart)=>{
+    return cart.currentDropdownStatus;
+});
+
