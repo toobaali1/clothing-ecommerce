@@ -1,5 +1,5 @@
 import React from "react";
-import {HeaderContainer,LogoContainer,OptionsContainer, OptionLink, OptionDiv} from "./header.styles";
+import {HeaderContainer,LogoContainer,OptionsContainer, OptionLink} from "./header.styles";
 
 // COMPONENTS
 import {ReactComponent as ReactLogo} from "../../assets/crown.svg";
@@ -18,6 +18,7 @@ import { auth } from "../../firebase/firebase.utils";
 const Header = ({currentUser, currentDropdownStatus}) =>{
     return(
         <HeaderContainer>
+
             <LogoContainer to="/">
                 <ReactLogo />
             </LogoContainer>
@@ -25,11 +26,14 @@ const Header = ({currentUser, currentDropdownStatus}) =>{
             <OptionsContainer>
                 <OptionLink to="/shop">SHOP</OptionLink>
                 <OptionLink to="/contact">CONTACT</OptionLink>
-                {currentUser?<OptionDiv onClick={()=>auth.signOut()} >SIGN OUT</OptionDiv>:<OptionLink to="/signin">SIGN IN</OptionLink>}
+                {currentUser ?
+                <OptionLink as='div' onClick={()=>auth.signOut()} >SIGN OUT</OptionLink> :
+                <OptionLink to="/signin">SIGN IN</OptionLink>}
                 <CartIcon />
             </OptionsContainer>
 
            {currentDropdownStatus && <CartDropdown />}
+           
         </HeaderContainer>
     )
 }
