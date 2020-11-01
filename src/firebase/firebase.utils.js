@@ -55,4 +55,19 @@ export const createUserProfileDocument = async (authUser, additionalData)=>{
   return userRef; //return userRef as it might be needed somewhere else
 
 }
+
+// Populating the database with SHOP_DATA
+export const addCollectionsAndDocuments = async (collectionKey, documentObjectsToAdd) => {
+  const collectionRef = firestore.collection(collectionKey);
+  
+  const batch = firestore.batch();
+
+  documentObjectsToAdd.forEach(obj => {
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, obj);
+  });
+
+  return await batch.commit();
+}
+
 export default firebase;
